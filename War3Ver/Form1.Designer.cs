@@ -1,4 +1,4 @@
-﻿namespace War3Ver
+namespace War3Ver
 {
     partial class Form1
     {
@@ -38,18 +38,24 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::War3Ver.Properties.Resources.image;
-            this.pictureBox1.Location = new System.Drawing.Point(-5, -2);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(494, 110);
+            this.pictureBox1.Size = new System.Drawing.Size(530, 110);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(13, 127);
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Location = new System.Drawing.Point(15, 120);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(464, 232);
+            this.groupBox1.Size = new System.Drawing.Size(500, 260);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "版本转换器";
@@ -57,7 +63,8 @@
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(383, 378);
+            this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRun.Location = new System.Drawing.Point(421, 395);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(94, 37);
             this.btnRun.TabIndex = 4;
@@ -67,15 +74,17 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 451);
+            this.label1.Location = new System.Drawing.Point(12, 442);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 18);
             this.label1.TabIndex = 5;
             // 
             // btnAbout
             // 
-            this.btnAbout.Location = new System.Drawing.Point(252, 378);
+            this.btnAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbout.Location = new System.Drawing.Point(310, 395);
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.Size = new System.Drawing.Size(91, 37);
             this.btnAbout.TabIndex = 6;
@@ -85,16 +94,16 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 472);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(530, 470);
             this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
-            this.Text = "War3 版本切换器 Ver1.0";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "War3 版本切换器 Ver1.0 (修复版)";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -111,4 +120,3 @@
         private System.Windows.Forms.Button btnAbout;
     }
 }
-
