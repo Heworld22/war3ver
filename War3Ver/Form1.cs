@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +13,7 @@ namespace War3Ver
 {
     public partial class Form1 : Form
     {
-        public  string  iniFilePath=null;
+        public string iniFilePath = null;
 
         public string WAR = "war3";
       
@@ -22,18 +22,14 @@ namespace War3Ver
             InitializeComponent();
         }
 
-
-        
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
 
-
         //自动创建按钮
         public void CreateVerButton()
         {
-
             List<string> keys = new List<string>();
 
             if (File.Exists(this.iniFilePath))
@@ -41,29 +37,28 @@ namespace War3Ver
                 keys = IniHelper.GetKeys(WAR, this.iniFilePath);
             }
 
-
             int temp = 0;
 
             for (int i = 0; i < keys.Count; i++)
             {
                 int n = i % 4;
-                if (n==0&&i!=0)
+                if (n == 0 && i != 0)
                 {
-                    temp++;    //这个条件语句的意思是：如果控件的数量正好是4的倍数的话那么tmp+1  这个是用于控制y轴的
+                    temp++;    //每4个按钮换一行
                 }
                 int x = n * 120, y = 70 * temp;
 
                 //创建按钮
-
                 Button btn = new Button();
 
-                btn.Location = new System.Drawing.Point(x + 0, y + 25);
+                // 加上 18 像素左边距，让 4 列按钮在 500 宽的框内居中对齐
+                btn.Location = new System.Drawing.Point(x + 18, y + 30);
 
                 btn.Name = keys[i].ToString();
 
                 btn.Size = new System.Drawing.Size(102, 48);
 
-                btn.TabIndex = 18;
+                btn.TabIndex = 18 + i;
 
                 btn.Text = keys[i].ToString();
 
@@ -72,10 +67,9 @@ namespace War3Ver
                 btn.Click += new EventHandler(btn_Click);//button的单击事件
 
                 this.groupBox1.Controls.Add(btn);
-
-                this.label1.Text = "war3....加载配置成功！本次共加载"+ keys.Count + "版本!";
             }
 
+            this.label1.Text = "war3....加载配置成功！本次共加载" + keys.Count + "版本!";
         }
 
         private void btn_Click(object sender, EventArgs e)
@@ -91,43 +85,35 @@ namespace War3Ver
             {
                 var value = IniHelper.GetValue(WAR, nameid, this.iniFilePath);
                 
-                var p = dir+"\\ver\\"+value;
+                var p = Path.Combine(dir, "ver", value);
                 try
                 {
-                    zip.UnZipFile(p, dir,true);
+                    zip.UnZipFile(p, dir, true);
+                    this.label1.Text = "版本成功更换为：" + nameid + "，请进游戏体验！";
+                    MessageBox.Show("版本成功更换为：" + nameid);
                 }
                 catch (Exception ex)
                 {
-
-                   MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
-
-                this.label1.Text = "版本成功更换为：" + nameid + "，请进游戏体验！";
-
-                MessageBox.Show("版本成功更换为："+nameid);
             }
             else
             {
                 MessageBox.Show("文件加载失败，请确认是否存在此文件：" + this.iniFilePath);
             }
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-                string directory = System.AppDomain.CurrentDomain.BaseDirectory+"\\ver";
-                this.iniFilePath = Path.Combine(directory, "war3version.ini");
-                //ReadIniFile();
-                //ReadIniKeys();
+            string directory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "ver");
+            this.iniFilePath = Path.Combine(directory, "war3version.ini");
             CreateVerButton();
         }
-
 
         public void ReadIniKeys()
         {
             if (File.Exists(this.iniFilePath))
             {
-                //this.listBox1.DataSource= IniHelper.GetKeys("war3",this.iniFilePath);
                 MessageBox.Show("读取文档成功");
             }
             else
@@ -138,7 +124,6 @@ namespace War3Ver
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-
             var dir = System.AppDomain.CurrentDomain.BaseDirectory;
             var path = Path.Combine(dir, "War3.exe");
 
@@ -148,10 +133,8 @@ namespace War3Ver
             }
             catch (Exception)
             {
-
                 MessageBox.Show("未找到WAR3.exe");
             }
-
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
